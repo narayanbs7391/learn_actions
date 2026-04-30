@@ -8,6 +8,9 @@ env:
     RESOURCE_GROUP: "your-resource-group"
     CLUSTER_NAME: "your-cluster-name"
     DEPLOYMENT_MANIFEST_PATH: "your-deployment-manifest-path"
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   buildImage:
