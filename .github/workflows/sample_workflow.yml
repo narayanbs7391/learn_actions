@@ -50,7 +50,7 @@ jobs:
             # Builds and pushes an image up to your Azure Container Registry
       - name: kubelogin-connect
         run: |
-          az aks get-credentials -g ${{ env.RESOURCE_GROUP }} -n ${{ env.CLUSTER_NAME }} --admin
+          az aks get-credentials -g ${{ env.RESOURCE_GROUP }} -n ${{ env.CLUSTER_NAME }}
       - name: Deploy to AKS
         run: |
           kubectl apply -f ${{ env.CONFIG_FILE }}
