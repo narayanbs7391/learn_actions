@@ -3,11 +3,11 @@ on:
   workflow_dispatch:
 
 env:
-    AZURE_CONTAINER_REGISTRY: "your-azure-container-registry"
-    CONTAINER_NAME: "your-container-name"
-    RESOURCE_GROUP: "your-resource-group"
-    CLUSTER_NAME: "your-cluster-name"
-    DEPLOYMENT_MANIFEST_PATH: "your-deployment-manifest-path"
+    RESOURCE_GROUP: "3004-learning"
+    CLUSTER_NAME: "aks-github-actions"
+    DEPLOYMENT_MANIFEST_PATH: "./deploy.yaml"
+    CONFIG_FILE: "./configmap.yaml"
+    service_file: "./service.yaml"
 permissions:
   id-token: write
   contents: read
@@ -48,28 +48,18 @@ jobs:
           inlineScript: |
             Get-AzContext       
             # Builds and pushes an image up to your Azure Container Registry
-  # deploy:
-  #       permissions:
-  #       actions: read
-  #       contents: read
-  #       id-token: write
-  #       runs-on: ubuntu-latest
-  #       needs: [buildImage]
-  #       steps:
-  #       # Checks out the repository this file is in
-  #       - uses: actions/checkout@v4
-    
-  #       # Logs in with your Azure credentials
-  #       - name: Azure login
-  #           uses: azure/login@v1.4.6
-  #           with:
-  #           client-id: ${{ secrets.AZURE_CLIENT_ID }}
-  #           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-  #           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-    
-  #       # Use kubelogin to configure your kubeconfig for Azure auth
-  #       - name: Set up kubelogin for non-interactive login
-  #           uses: azure/use-kubelogin@v1
-  #           with:
-  #           kubelogin-version: 'v0.0.25'
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [buildImage]
+    steps:
+      - name: kubelogin-connect
+        run: |
+          az aks get-credentials -g ${{ env.RESOURCE_GROUP }} -n ${{ env.CLUSTER_NAME }} --admin
+      - name: Deploy to AKS
+        run: |
+          kubectl apply -f ${{ env.CONFIG_FILE }}
+          kubectl apply -f ${{ env.DEPLOYMENT_MANIFEST_PATH }}
+          kubectl apply -f ${{ env.service_file }}
+
+           
 
