@@ -46,7 +46,11 @@ jobs:
         with:
           azPSVersion: "latest"
           inlineScript: |
-            Get-AzContext       
+              az aks show \
+                -g 3004-learning \
+                -n aks-github-actions \
+                --query disableLocalAccounts
+     
             # Builds and pushes an image up to your Azure Container Registry
       - name: kubelogin-connect
         run: |
