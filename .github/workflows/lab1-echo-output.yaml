@@ -9,4 +9,5 @@ jobs:
       - name: Echo output
         run: |
           echo "Hello, World!123123"
+          ls -alh
 
