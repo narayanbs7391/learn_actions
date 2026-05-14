@@ -1,9 +1,10 @@
 name: lab1-echo-output-check
 on:
   workflow_dispatch:
-runs-on: ubuntu-latest
+
 jobs:
   echoOutput:
+    runs-on: ubuntu-latest
     steps:
       - name: Echo output
         run: |
