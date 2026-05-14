@@ -1,0 +1,46 @@
+name: lab2-basic-shells
+on:
+  workflow_dispatch:
+
+jobs:
+    linux-shell-output:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo output
+              run: |
+                echo "Hello, World!123123"
+                ls -alh
+    
+    python-shell-output:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo output
+              run: |
+                print("hellow from python")
+              shell: python
+    
+    bash-shell-output:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo output
+              run: |
+                echo "Hello, World!123123"
+                ls -alh
+              shell: bash
+    
+    java-shell-output:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo output
+              run: |
+                System.out.println("Hello from Java");
+              shell: java
+    
+    action-marketplace-output:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo output
+              uses: actions/github-script@v6
+              with:
+                script: |
+                  console.log("Hello from GitHub Actions Marketplace")
