@@ -39,9 +39,13 @@ jobs:
             
         - name: Echo output
           run: |
-            System.out.println("Hello from Java");
-            shell: java
-    
+            cat >> HelloWorld.java << EOL
+            public class HelloWorld {
+                public static void main(String[] args) {
+                    System.out.println("Hello, World!123123");
+                }
+            }
+            EOL    
     action-marketplace-output:
         runs-on: ubuntu-latest
         steps:
