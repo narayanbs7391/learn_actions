@@ -36,15 +36,11 @@ jobs:
           with:
             distribution: 'temurin' # See 'Supported distributions' for available options
             java-version: '25'
-    
-    
-    java-shell-output:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Echo output
-              run: |
-                System.out.println("Hello from Java");
-              shell: java
+            
+        - name: Echo output
+          run: |
+            System.out.println("Hello from Java");
+            shell: java
     
     action-marketplace-output:
         runs-on: ubuntu-latest
