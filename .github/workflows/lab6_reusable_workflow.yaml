@@ -10,11 +10,7 @@ on:
                 description: 'Choose a color'
                 required: true
                 default: 'Red'
-                type: choice
-                options:
-                    - Red
-                    - Green
-                    - Blue
+                type: string
 jobs:
     print-color:
         runs-on: ubuntu-latest

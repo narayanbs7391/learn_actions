@@ -6,4 +6,4 @@ jobs:
         uses: ./.github/workflows/lab6_reusable_workflow.yaml
         with:
             greeting: "Hello from the reusable workflow!"
-            choose-color: "Green"
+            choose-color: 'Blue'
