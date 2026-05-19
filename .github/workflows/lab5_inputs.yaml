@@ -1,0 +1,28 @@
+name: working with inputs
+on:
+    workflow_dispatch:
+    inputs:
+        name:
+            description: 'Your name'
+            required: true
+            default: 'World'
+        greeting:
+            description: 'Greeting message'
+            required: false
+            default: 'Hello'
+        howareyou:
+            description: 'How are you feeling today?'
+            required: false
+            default: 'Good'
+            type: choice
+            options:
+                - Good
+                - Bad
+                - Meh
+jobs:
+    greet:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Greet the user
+              run: |
+                echo "${{ inputs.greeting }}, ${{ inputs.name }}!"
