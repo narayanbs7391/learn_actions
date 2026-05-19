@@ -25,4 +25,4 @@ jobs:
         steps:
             - name: Greet the user
               run: |
-                echo "${{ inputs.greeting }}, ${{ inputs.name }}!"
+                echo "${{ inputs.greeting }}, ${{ inputs.name }}!-${{inputs.howareyou}}"
