@@ -8,7 +8,7 @@ on:
                 default: 'World'
             greeting:
                 description: 'Greeting message'
-                required: false
+                required: true
                 default: 'Hello'
             howareyou:
                 description: 'How are you feeling today?'
