@@ -1,0 +1,24 @@
+on:
+    workflow_call:
+        inputs:
+            greeting:
+                description: 'Greeting message'
+                required: true
+                default: 'Hello'
+                type: string
+            choose-color:
+                description: 'Choose a color'
+                required: true
+                default: 'Red'
+                type: choice
+                options:
+                    - Red
+                    - Green
+                    - Blue
+jobs:
+    print-color:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print the chosen color
+              run: |
+                echo "You chose the color: ${{ inputs.choose-color }}"
