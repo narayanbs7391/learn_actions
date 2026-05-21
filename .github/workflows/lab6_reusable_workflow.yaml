@@ -26,3 +26,4 @@ jobs:
               run: |
                 echo "You chose the color: ${{ inputs.choose-color }}"
                 echo "greet=${{ inputs.greeting }} ${{inputs.choose-color}}" >> $GITHUB_OUTPUT
+                echo " ${{greet}}"
