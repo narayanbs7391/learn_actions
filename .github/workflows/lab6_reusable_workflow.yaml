@@ -11,10 +11,17 @@ on:
                 required: true
                 default: 'Red'
                 type: string
+        outputs:
+            greet:
+                description: 'Greeting output'
+                value: ${{ jobs.print-color.outputs.greet }}
 jobs:
     print-color:
+        outputs:
+            greet: ${{ steps.print-color.outputs.greet }}
         runs-on: ubuntu-latest
         steps:
             - name: Print the chosen color
               run: |
                 echo "You chose the color: ${{ inputs.choose-color }}"
+                echo "greet=${{ inputs.greeting }} ${inputs.choose-color}" >> $GITHUB_OUTPUT
