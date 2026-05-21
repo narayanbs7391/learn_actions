@@ -22,6 +22,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Print the chosen color
+              id: print-color
               run: |
                 echo "You chose the color: ${{ inputs.choose-color }}"
                 echo "greet=${{ inputs.greeting }} ${{inputs.choose-color}}" >> $GITHUB_OUTPUT
