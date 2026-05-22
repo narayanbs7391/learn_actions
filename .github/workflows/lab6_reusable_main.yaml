@@ -5,5 +5,12 @@ jobs:
     call-reusable-workflow:
         uses: ./.github/workflows/lab6_reusable_workflow.yaml
         with:
-            greeting: "Hello from the reusable workflow!"
+            greeting: "Hello"
             choose-color: 'Blue'
+    use-reusable-workflow-output:
+        needs: call-reusable-workflow
+        runs-on: ubuntu-latest
+        steps:
+            - name: Use the output from reusable workflow
+              run: |
+                echo "Output from reusable workflow: ${{ needs.call-reusable-workflow.outputs.greet }}"
