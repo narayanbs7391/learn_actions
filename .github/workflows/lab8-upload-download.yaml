@@ -8,7 +8,7 @@ jobs:
       - name: Create a file to upload as artifact
         run: echo "This is a sample artifact file." > artifact.txt
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: sample-artifact
 
@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v3.1.0
         with:
           name: sample-artifact
           path: ./downloaded-artifact
