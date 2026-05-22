@@ -39,13 +39,13 @@ jobs:
             
         - name: Echo output
           run: |
-            cat >> HelloWorld.java << EOL
+            cat <<ABC > HelloWorld.java
             public class HelloWorld {
                 public static void main(String[] args) {
                     System.out.println("Hello, World!123123");
                 }
-            }
-            EOL    
+            } 
+            ABC
     action-marketplace-output:
         runs-on: ubuntu-latest
         steps:

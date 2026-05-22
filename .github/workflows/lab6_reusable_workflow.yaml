@@ -9,7 +9,6 @@ on:
             choose-color:
                 description: 'Choose a color'
                 required: true
-                default: 'Red'
                 type: string
         outputs:
             greet:

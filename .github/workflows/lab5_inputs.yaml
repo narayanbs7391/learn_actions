@@ -8,7 +8,7 @@ on:
                 default: 'World'
             greeting:
                 description: 'Greeting message'
-                required: false
+                required: true
                 default: 'Hello'
             howareyou:
                 description: 'How are you feeling today?'
@@ -25,4 +25,4 @@ jobs:
         steps:
             - name: Greet the user
               run: |
-                echo "${{ inputs.greeting }}, ${{ inputs.name }}!"
+                echo "${{ inputs.greeting }}, ${{ inputs.name }}!-${{inputs.howareyou}}"
