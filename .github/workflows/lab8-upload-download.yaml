@@ -25,4 +25,4 @@ jobs:
       - name: list-directory
         run: ls ./artifact-download
       - name: Display downloaded artifact content
-        run: cat ./artifact-download/sample-artifact.txt   
+        run: cat ./artifact-download/artifact.txt   
