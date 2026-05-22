@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 jobs:
   upload-artifact:
-    runs-on: ubuntu-latest
+    runs-on: vm-host
     steps:
       - name: Create a file to upload as artifact
         run: echo "This is a sample artifact file." > artifact.txt
@@ -14,7 +14,7 @@ jobs:
           path: artifact.txt
 
   download-artifact:
-    runs-on: ubuntu-latest
+    runs-on: vm-host
     needs: upload-artifact
     steps:
       - name: Download artifact
