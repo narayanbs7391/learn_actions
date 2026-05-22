@@ -1,0 +1,24 @@
+name: lab to learn upload and download artifacts between jobs
+on:
+  workflow_dispatch:
+jobs:
+  upload-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create a file to upload as artifact
+        run: echo "This is a sample artifact file." > artifact.txt
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: sample-artifact
+
+  download-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: sample-artifact
+          path: ./downloaded-artifact
+      - name: Display downloaded artifact content
+        run: cat ./downloaded-artifact/artifact.txt   
