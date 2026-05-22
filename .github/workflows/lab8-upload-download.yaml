@@ -11,7 +11,7 @@ jobs:
         uses: actions/upload-artifact@v7.0.1
         with:
           name: sample-artifact
-          path: ./artifact
+          path: ./artifact/sample-artifact.txt
 
   download-artifact:
     runs-on: ubuntu-latest
@@ -21,8 +21,8 @@ jobs:
         uses: actions/download-artifact@v8.0.1
         with:
           name: sample-artifact
-          path: ./artifact
+          path: ./artifact-download
       - name: list-directory
-        run: ls ./artifact
+        run: ls ./artifact-download
       - name: Display downloaded artifact content
-        run: cat ./artifact.txt   
+        run: cat ./artifact-download/sample-artifact.txt   
