@@ -11,6 +11,7 @@ jobs:
         uses: actions/upload-artifact@v7.0.1
         with:
           name: sample-artifact
+          path: ./artifact.txt
 
   download-artifact:
     runs-on: ubuntu-latest
