@@ -22,8 +22,10 @@ runs:
         - name: generate random number
           id: generate-random-number
           run: |
-            echo "random-number = $RANDOM" >> $GITHUB_OUTPUT
+            rand = $RANDOM
+            echo "random-number = $rand" >> $GITHUB_OUTPUT
             echo "Generated random number: ${{ steps.generate-random-number.outputs.random-number }}"
+            echo "generated random number is $rand"
           shell: bash
         
 
