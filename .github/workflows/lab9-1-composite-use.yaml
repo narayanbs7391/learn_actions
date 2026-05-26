@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run a composite action
-        uses: ./.github/actions/composite-action
+        uses: ./.github/workflows/lab9-composite-actions.yaml
         with:
           who-to-greet: "Shaktiman"
       - name: Display the random number output from composite action
