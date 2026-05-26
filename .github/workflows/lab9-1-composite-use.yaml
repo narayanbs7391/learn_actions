@@ -7,7 +7,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Run a composite action
-        uses: ./.github/actions/lab9-composite-actions.yaml
+        uses: ./.github/actions/lab9-composite
         with:
           who-to-greet: "Shaktiman"
       - name: Display the random number output from composite action
