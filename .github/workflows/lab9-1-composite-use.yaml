@@ -1,0 +1,13 @@
+on: workflow_dispatch
+
+jobs:
+  composite-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a composite action
+        uses: ./.github/actions/composite-action
+        with:
+          who-to-greet: "Shaktiman"
+      - name: Display the random number output from composite action
+        run: echo "The random number is ${{ steps.composite-action.outputs.random-number }}"
+        shell: bash
