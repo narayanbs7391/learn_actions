@@ -21,8 +21,11 @@ runs:
               WHO_TO_GREET: ${{ inputs.who-to-greet }}
         - name: generate random number
           id: generate-random-number
-          run: echo "random-number=$RANDOM" >> $GITHUB_OUTPUT
+          run: |
+            echo "random-number=$RANDOM" >> $GITHUB_OUTPUT
+            echo "Generated random number: ${{ steps.generate-random-number.outputs.random-number }}"
           shell: bash
+        
 
         - name: set github action path
           run: echo "GITHUB_PATH=$GITHUB_ACTION_PATH" >> $GITHUB_PATH
