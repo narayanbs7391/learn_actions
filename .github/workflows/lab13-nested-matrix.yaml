@@ -1,0 +1,21 @@
+name: lab13 nested matrix workflow
+on:
+    workflow_dispatch:
+jobs:
+    nested-matrix-job:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [14, 16, 18]
+                os: [ubuntu-latest, windows-latest, macos-latest]
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+            - name: Set up Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
+              uses: actions/setup-node@v3
+              with:
+                node-version: ${{ matrix.node-version }}
+            - name: Print Node.js version and OS
+              run: |
+                echo "Running on OS: ${{ matrix.os }}"
+                node --version
