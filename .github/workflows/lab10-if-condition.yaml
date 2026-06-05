@@ -1,0 +1,27 @@
+name: Conditional Workflow for Lab 10
+
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - main
+            - badhri-learning
+jobs:
+    if-condition-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+            - name: print branch name
+              run: echo "The branch name is ${{ github.ref }}"
+              shell: bash
+            - name: Check if the branch is main
+              if: github.ref == 'refs/heads/main'
+              run: echo "This is the main branch. Running main branch specific steps."
+              shell: bash
+            - name: Check if the branch is badhri-learning
+              if: github.ref == 'refs/heads/badhri-learning'
+              run: echo "This is the badhri-learning branch. Running badhri-learning branch specific steps."
+              shell: bash
+
+
