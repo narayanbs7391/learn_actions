@@ -9,7 +9,7 @@ jobs:
     expression-job:
         runs-on: ubuntu-latest
         env:
-            deploy_env: $${{ github.ref == 'refs/heads/main' && 'production' || (github.ref == 'refs/heads/badhri-learning' && 'staging' || 'development') }}
+            deploy_env: $${{ github.ref == 'refs/heads/main' && 'production' || (github.ref == 'refs/heads/badhri-learning' && 'staging-dev' || 'development') }}
         steps:
             - name: Checkout repository
               uses: actions/checkout@v3
