@@ -1,0 +1,17 @@
+name: lab for expression
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - main
+            - badhri-learning
+jobs:
+    expression-job:
+        runs-on: ubuntu-latest
+        env:
+            deploy_env: $${{ github.ref == 'refs/heads/main' && 'production' || (github.ref == 'refs/heads/badhri-learning' && 'staging' || 'development') }}
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+            - name: Print the deployment environment
+              run: echo "The deployment environment is $deploy_env"
